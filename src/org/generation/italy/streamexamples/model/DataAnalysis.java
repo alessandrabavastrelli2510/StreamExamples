@@ -2,6 +2,7 @@ package org.generation.italy.streamexamples.model;
 
 import java.util.List;
 import java.util.OptionalDouble;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,6 +24,9 @@ public class DataAnalysis {
         return counter;
     }
     public int countFemalesWithStream(){
+        // Predicate<Developer> pd1 = d -> d.isFemale();
+        // Predicate<Developer> pd2 = d -> d.calculateAge() > 50;
+        // var pd3 = pd1.and(pd2);
         // SexPredicate sp = new SexPredicate();
         // Stream<Developer> intermediate = developers.stream().filter(Developer::isFemale);
         // Stream<Developer> secondary = intermediate.limit(4);
@@ -38,6 +42,7 @@ public class DataAnalysis {
         }
     }   
     public double getAverageSalaryForWomen(){
+        Stream<String> ns = developers.stream().map(d -> d.getFullName());
         OptionalDouble od = developers.stream().filter(Developer::isFemale).mapToDouble(Developer::getSalary).average();
         if(od.isEmpty()){
             return -1;
