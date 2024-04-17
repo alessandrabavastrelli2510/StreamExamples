@@ -1,6 +1,7 @@
 package org.generation.italy.streamexamples.model;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,5 +46,8 @@ public class Developer {
     public String getFullName(){
         return firstname +" "+ lastname;
     }
-
+    public int calculateAge(){
+        return Period.between(birthDate, LocalDate.now()).getYears();
+    }
+    
 }

@@ -8,5 +8,7 @@ public class SexPredicate implements Predicate<Developer>{
     public boolean test(Developer t) {
         return !t.isMale();
     }
-
+    public int t(Developer t){
+        return t.calculateAge(null, null);
+    }
 }
